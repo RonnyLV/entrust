@@ -30,10 +30,8 @@ trait EntrustUserTrait
      *
      * @return void|bool
      */
-    public static function boot()
+    public static function bootEntrustUserTrait()
     {
-        parent::boot();
-
         static::deleting(function($user) {
             if (!method_exists(Config::get('auth.model'), 'bootSoftDeletingTrait')) {
                 $user->roles()->sync([]);
